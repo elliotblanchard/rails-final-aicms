@@ -1,0 +1,17 @@
+<h1>Sign Up</h1>
+
+<%= form_for(@user, url:'/signup') do |f| %>
+    <%= f.label :username %>
+    <%= f.text_field :username, required:true %>
+    </p>
+    <p>
+    <%= f.label :password %>
+    <%= f.password_field :password, required:true %>          
+    </p>
+    <p>  
+    <%= f.label :admin %>
+    <%= f.check_box :admin %>   
+    </p>
+    <p>     
+    <%= f.submit "Create User" %>     
+<% end %>
