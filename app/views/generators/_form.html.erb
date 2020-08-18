@@ -1,0 +1,15 @@
+<%= form_for(@generator) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, required:true %>
+    </p>
+    <p>
+    <%= f.label :api_url, "API URL" %>
+    <%= f.text_field :api_url, required:true %>          
+    </p>
+    <p>  
+    <%= f.label :description %>
+    <%= f.text_area :description, required:true %>  
+    </p>
+    <p>     
+    <%= f.submit "Submit Generator" %>     
+<% end %>

@@ -12,7 +12,9 @@
   <body>
     <div>
       <% if logged_in? %>
-        <%= link_to "Logout", logout_path, method: "delete" %>
+        <%= link_to "Logout", logout_path, method: "delete" %> |
+        <%= link_to "Create Document", new_document_path %> |
+        <%= link_to "Generator List", generators_path if admin? %>
       <% else %>
         <%=link_to "Sign Up", signup_path %> |
         <%=link_to "Log In", login_path %> 

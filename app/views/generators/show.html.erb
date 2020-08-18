@@ -1,0 +1,12 @@
+<h1>¡Show Generator!</h1>
+
+<p>Name: <%= @generator.name %></p>
+<p>API URL: <%= @generator.api_url %></p>
+<p>Description: <%= @generator.description %></p>
+<p>Associated Documents:</p>
+<ul>
+    <li>ASSOCIATED DOCS TKTKTK</li>
+</ul>
+<p><%= link_to "Edit Generator", edit_generator_path %></p>
+<h1>You can only show this destroy button if there's no documents associated with the generator</h1>
+<p><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></p>

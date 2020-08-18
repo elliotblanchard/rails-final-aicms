@@ -1,0 +1,9 @@
+<h1>¡Generator Index!</h1>
+
+<h2>Current generators:</h2>
+<ol>
+<% @generators.each do |generator| %>
+    <li><%= link_to generator.name, generator_path(generator) %></li>
+<% end %>
+</ol>
+<p><%= link_to "Create new generator", new_generator_path %></p>

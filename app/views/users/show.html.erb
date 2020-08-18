@@ -1,2 +1,5 @@
-<h1>Name: <%=@user.username %></h1> 
+<h1>Name: <%=@user.username %></h1>
+<% if admin? %>
+    <h2>Admin</h2>
+<% end %>
 

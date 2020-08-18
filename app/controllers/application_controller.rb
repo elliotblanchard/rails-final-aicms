@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def redirect_if_not_admin
+        redirect_to '/' if !admin? 
+     end
+
 end

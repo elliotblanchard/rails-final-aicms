@@ -1,0 +1,42 @@
+<h1>¡New Document!</h1>
+
+<%= form_for(@document) do |f| %>
+    <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, required:true %>
+    </p>
+    <p>      
+    <%= label_tag(:generator) %>
+    <%= collection_select(:generator, :id, Generator.all, :id, :name) %>  
+    </p>
+    <p>        
+    <%= f.label :prompt %>
+    <%= f.text_area :prompt, required:true %>  
+    </p>
+    <p>    
+    <%= f.label :length %>
+    <%= f.text_field :length, value: '1000' %>  
+    </p>
+    <p>    
+    <%= f.label :is_continuation %>
+    <%= f.check_box :is_continuation, value:false %>  
+    </p>
+    <p>    
+    <%= f.label :start_at_beginning %>
+    <%= f.check_box :start_at_beginning, value:true %>  
+    </p>
+    <p>       
+    <%= f.label :pause_at_end %>
+    <%= f.check_box :pause_at_end, value:false %>  
+    </p>
+    <p>  
+    <%= f.label :top_p %>
+    <%= f.text_field :top_p, value: '0.9' %>  
+    </p>
+    <p>    
+    <%= f.label :temperature %>
+    <%= f.text_field :temperature, value: '1.0' %>  
+    </p>
+    <%= f.submit "Create Document" %>     
+<% end %>
+
