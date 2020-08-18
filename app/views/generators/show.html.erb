@@ -5,8 +5,9 @@
 <p>Description: <%= @generator.description %></p>
 <p>Associated Documents:</p>
 <ul>
-    <li>ASSOCIATED DOCS TKTKTK</li>
+    <li>ASSOCIATED DOCS TKTKTK (SCOPE METHOD)</li>
 </ul>
 <p><%= link_to "Edit Generator", edit_generator_path %></p>
-<h1>You can only show this destroy button if there's no documents associated with the generator</h1>
-<p><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></p>
+<% if @generator.documents.length == 0 %>
+    <p><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></p>
+<% end %>

@@ -12,3 +12,5 @@
 <p>Temperature: <%= @document.temperature %></p>
 <p>Content:</p> 
 <p><%= @document.generated_response %></p>
+
+<p><%= button_to "Delete Document", @document, :method=>:delete, :class=>:destroy %></p>

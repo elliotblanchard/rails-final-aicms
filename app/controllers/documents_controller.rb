@@ -2,8 +2,11 @@ class DocumentsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        #this should only show the user's documents, unless they are an admin
-        #should allow documents to be deleted
+        if admin?
+            @documents = Document.all
+        else
+            @documents = current_user.documents.all
+        end
     end
 
     def new
@@ -30,6 +33,11 @@ class DocumentsController < ApplicationController
             redirect_to user_path 
         end
     end
+
+    def destroy
+        Document.find(params[:id]).destroy
+        redirect_to documents_path
+    end      
 
     private
 

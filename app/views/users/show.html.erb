@@ -3,3 +3,10 @@
     <h2>Admin</h2>
 <% end %>
 
+<h2>Your Documents:</h2>
+<ol>
+<% @user.documents.all.each do |document| %>
+    <li><%= link_to document.name, document_path(document) %></li>
+<% end %>
+</ol>
+
