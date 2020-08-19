@@ -12,9 +12,10 @@
   <body>
     <div>
       <% if logged_in? %>
+        <%= link_to current_user.username, user_path(current_user.id) %> | 
         <%= link_to "Logout", logout_path, method: "delete" %> |
-        <%= link_to "Create Document", new_document_path %> |
-        <%= link_to "Your Documents", documents_path %> |
+        <%= link_to "Create Document", new_user_document_path(current_user.id) %> |
+        <%= link_to "Your Documents", user_documents_path(current_user.id) %> |
         <%= link_to "Generator List", generators_path if admin? %>
       <% else %>
         <%=link_to "Sign Up", signup_path %> |

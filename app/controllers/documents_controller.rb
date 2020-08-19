@@ -5,20 +5,28 @@ class DocumentsController < ApplicationController
         if admin?
             @documents = Document.all
         else
-            @documents = current_user.documents.all
+            if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+                @documents = @user.documents
+            else
+                @documents = current_user.documents
+            end
         end
     end
 
     def new
-        @document = Document.new
         @generators = Generator.all
+        if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+            @document = @user.documents.build
+        else
+            @document = Document.new
+        end
     end    
 
     def create
         @generator = Generator.find(params[:generator][:id])
         params[:document][:generator_id] = params[:generator][:id]
         params[:document][:user_id] = current_user.id
-        params[:document][:generated_response] = @generator.generator_request(params[:document])
+        params[:document][:generated_response] = @generator.generator_request(params[:document]) #Call the API to generate the document content
         @document = Document.new(document_params)
         if @document.save
             redirect_to @document

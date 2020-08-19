@@ -1,6 +1,6 @@
 <h1>¡New Document!</h1>
 
-<%= form_for(@document) do |f| %>
+<%= form_for([@user, @document]) do |f| %>
     <p>
     <%= f.label :name %>
     <%= f.text_field :name, required:true %>
