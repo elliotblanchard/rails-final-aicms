@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        unless (params[:id] == current_user.id) || admin?
-            redirect_to user_path 
+        unless (params[:id].to_i == current_user.id) || admin?
+            redirect_to root_path 
         end
         @user = User.find_by_id(params[:id])
     end

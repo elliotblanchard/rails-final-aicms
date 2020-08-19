@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  get '/auth/google_oauth2/callback' => 'sessions#googleauth'
+
   resources :generators
   resources :users do
     resources :documents, only: [:new, :create, :index]
