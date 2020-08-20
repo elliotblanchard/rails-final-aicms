@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :documents, only: [:new, :create, :index]
   end
   resources :documents
+  get '/users/:id/documents/generated_length' => 'documents#generated_length'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

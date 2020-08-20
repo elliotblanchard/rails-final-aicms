@@ -13,6 +13,18 @@ class DocumentsController < ApplicationController
         end
     end
 
+    def generated_length
+        if admin?
+            @documents = Document.all.generated_length
+        else
+            if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+                @documents = @user.documents.generated_length
+            else
+                @documents = current_user.documents.generated_length
+            end
+        end
+    end
+
     def new
         @generators = Generator.all
         if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
