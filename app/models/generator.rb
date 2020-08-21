@@ -3,8 +3,10 @@ class Generator < ApplicationRecord
     has_many :users, through: :documents    
     
     validates :name, presence: true
+    validates :name, uniqueness: true    
     validates :api_url, presence: true
-    validates :api_url, format: { with: URI.regexp }, if: 'api_url.present?'
+    validates :api_url, format: { with: URI.regexp }
+    validates :api_url, uniqueness: true
     validates :description, presence: true        
 
     def generator_request(params)

@@ -3,6 +3,7 @@ class Document < ApplicationRecord
   belongs_to :generator
 
   validates :name, presence: true
+  validates :name, uniqueness: true   
   validates :prompt, presence: true
   validates :prompt, length: { in: 10..1000 }
   validates :length, numericality: { only_integer: true }
