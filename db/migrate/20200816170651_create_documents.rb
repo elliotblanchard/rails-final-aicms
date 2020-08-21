@@ -3,7 +3,7 @@ class CreateDocuments < ActiveRecord::Migration[6.0]
     create_table :documents do |t|
       t.string :name
       t.string :prompt
-      t.integer :length
+      t.integer :length, :default => 1000
       t.text :generated_response
       t.boolean :is_continuation, :default => false
       t.boolean :start_at_beginning, :default => true
