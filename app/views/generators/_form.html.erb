@@ -1,13 +1,4 @@
-<% if @generator.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@generator.errors.count, "error") %> prohibited this generator from being saved:</h2>
-    <ul>
-    <% @generator.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: "layouts/errors", locals: {object: @generator} %>
 
 <%= form_for(@generator) do |f| %>
     <%= f.label :name %>
