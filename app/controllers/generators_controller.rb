@@ -19,15 +19,15 @@ class GeneratorsController < ApplicationController
     end
 
     def show
-        @generator = Generator.find_by_id(params[:id])
+        @generator = get_generator
     end
 
     def edit
-        @generator = Generator.find(params[:id])
+        @generator = get_generator
     end
 
     def update
-        @generator = Generator.find(params[:id])
+        @generator = get_generator
     
         if @generator.update(generator_params)
           redirect_to generator_path(@generator)
@@ -45,5 +45,9 @@ class GeneratorsController < ApplicationController
 
     def generator_params
         params.require(:generator).permit(:name, :api_url, :description)
-    end    
+    end 
+    
+    def get_generator
+        Generator.find(params[:id])
+    end
 end

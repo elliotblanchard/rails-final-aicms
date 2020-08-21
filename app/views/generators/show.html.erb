@@ -4,9 +4,11 @@
 <p>API URL: <%= @generator.api_url %></p>
 <p>Description: <%= @generator.description %></p>
 <p>Associated Documents:</p>
-<ul>
-    <li>ASSOCIATED DOCS TKTKTK (SCOPE METHOD)</li>
-</ul>
+<ol>
+<% @generator.documents.each do |document| %>
+    <li><%= link_to document.name, document_path(document) %></li>
+<% end %>
+</ol>
 <p><%= link_to "Edit Generator", edit_generator_path %></p>
 <% if @generator.documents.length == 0 %>
     <p><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></p>

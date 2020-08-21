@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
         if admin?
             @documents = Document.all
         else
-            if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+            if user_found?
                 @documents = @user.documents
             else
                 @documents = current_user.documents
@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
         if admin?
             @documents = Document.all.generated_length
         else
-            if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+            if user_found?
                 @documents = @user.documents.generated_length
             else
                 @documents = current_user.documents.generated_length
@@ -27,7 +27,7 @@ class DocumentsController < ApplicationController
 
     def new
         @generators = Generator.all
-        if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+        if user_found?
             @document = @user.documents.build
         else
             @document = Document.new
@@ -63,5 +63,9 @@ class DocumentsController < ApplicationController
 
     def document_params
         params.require(:document).permit(:name, :prompt, :length, :generated_response, :is_continuation, :start_at_beginning, :pause_at_end, :top_p, :temperature, :user_id, :generator_id)
-    end    
+    end   
+    
+    def user_found?
+       true if (params[:user_id]) && (@user = User.find_by_id(params[:user_id]))
+    end
 end

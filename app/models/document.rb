@@ -7,8 +7,8 @@ class Document < ApplicationRecord
   validates :prompt, presence: true
   validates :prompt, length: { in: 10..1000 }
   validates :length, numericality: { only_integer: true }
-  validates :length, numericality: { greater_than: 10 }
-  validates :length, numericality: { less_than: 1000 }
+  validates :length, numericality: { greater_than_or_equal_to: 10 }
+  validates :length, numericality: { less_than_or_equal_to: 1000 }
   validates :top_p, numericality: true
   validates :top_p, numericality: { greater_than_or_equal_to: 0.0 }
   validates :top_p, numericality: { less_than_or_equal_to: 1.0 }
