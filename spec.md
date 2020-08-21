@@ -9,16 +9,16 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) document.generated_length (users/3/documents/generated_length)
-- [ ] Your forms should correctly display validation errors.
-    - [ ] Your fields should be enclosed within a fields_with_errors class
-    - [ ] Error messages describing the validation failures must be present within the view
+- [x] Your forms should correctly display validation errors.
+    - [x] Your fields should be enclosed within a fields_with_errors class
+    - [x] Error messages describing the validation failures must be present within the view
 - [x] Include signup (how e.g. Devise)
 - [x] Include login (how e.g. Devise)
 - [x] Include logout (how e.g. Devise)
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
 - [ ] Keep it DRY
     - [ ] Logic present in your controllers should be encapsulated as methods in your models
     - [ ] Your views should use helper methods and partials when appropriate
