@@ -1,6 +1,11 @@
-<ol>
-<% @documents.each do |document| %>
-    <li><%= link_to document.name, document_path(document) %></li>
-<% end %>
-</ol>
-<p><%= link_to "Create new document", new_document_path %></p>
+<div class="column">
+    <ol class="is-size-6">
+    <% @documents.each do |document| %>
+        <li><%= link_to document.name, document_path(document) %></li>
+    <% end %>
+    </ol>
+    <br>
+</div>
+<p class="subtitle is-6">
+<%= link_to "Create new document", new_document_path %>
+</p>

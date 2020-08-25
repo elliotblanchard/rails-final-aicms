@@ -12,10 +12,13 @@
     <section class="hero has-background-white-ter is-fullheight">
       <!-- .hero-head -->
       <nav class="hero-head">
-          <div class="columns is-mobile is-marginless heading has-text-weight-bold">
-              <div class="column right">
+          <div class="columns is-mobile is-marginless heading">
+              <div class="column is-one-quarter">
+                <p class="title is-6">AICMS</p>
+              </div>          
+              <div class="column has-text-right">
                   <% if logged_in? %>
-                    <p class="subtitle">
+                    <p class="subtitle is-6">
                       <%= link_to current_user.username, user_path(current_user.id) %> | 
                       <%= link_to "Logout", logout_path, method: :delete %> |
                       <%= link_to "Create Document", new_user_document_path(current_user.id) %> |
@@ -23,7 +26,7 @@
                       <%= link_to "Generator List", generators_path if admin? %>
                     </p>
                   <% else %>
-                    <p class="subtitle">
+                    <p class="subtitle is-6">
                       <%=link_to "Sign Up", signup_path %> |
                       <%=link_to "Log In", login_path %> 
                     </p>
@@ -37,12 +40,12 @@
       <div class="hero-body">
         <div class="container">
           <div class="columns is-centered">
-            <div class ="column is-5-tablet is-6-desktop is-7-widescreen"> 
+            <div class ="column is-4-tablet is-5-desktop is-6-widescreen"> 
               <div class="box">  
                 <%= yield %>
               </div>
             </div>
-          </div>
+          </div>          
         </div>
       </div>                      
     </section>    

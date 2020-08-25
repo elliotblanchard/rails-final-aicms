@@ -1,44 +1,72 @@
-<h1>¡New Document!</h1>
+<p class="title is-5">Create a New Document</p>
 
 <%= render partial: "layouts/errors", locals: {object: @document} %>
 
 <%= form_for([@user, @document]) do |f| %>
-    <p>
-    <%= f.label :name %>
-    <%= f.text_field :name, required:true %>
-    </p>
-    <p>      
-    <%= label_tag(:generator) %>
-    <%= collection_select(:generator, :id, Generator.all, :id, :name) %>  
-    </p>
-    <p>        
-    <%= f.label :prompt %>
-    <%= f.text_area :prompt, required:true %>  
-    </p>
-    <p>    
-    <%= f.label :length %>
-    <%= f.text_field :length, value: '1000' %>  
-    </p>
-    <p>    
-    <%= f.label :is_continuation %>
-    <%= f.check_box :is_continuation, value:false %>  
-    </p>
-    <p>    
-    <%= f.label :start_at_beginning %>
-    <%= f.check_box :start_at_beginning, value:true %>  
-    </p>
-    <p>       
-    <%= f.label :pause_at_end %>
-    <%= f.check_box :pause_at_end, value:false %>  
-    </p>
-    <p>  
-    <%= f.label :top_p %>
-    <%= f.text_field :top_p, value: '0.9' %>  
-    </p>
-    <p>    
-    <%= f.label :temperature %>
-    <%= f.text_field :temperature, value: '1.0' %>  
-    </p>
-    <%= f.submit "Create Document" %>     
+        <div class="field">
+            <%= f.label :name, class: 'label' %>
+            <div class="control">
+                <%= f.text_field :name, class: 'input', required:true %>
+            </div>
+        </div>
+        <div class="field">      
+            <%= f.label :generator, class: 'label' %>
+            <div class="control">
+                <%= collection_select(:generator, :id, Generator.all, :id, :name, {}, {:class=>'select'}) %>  
+            </div>
+        </div>
+        <div class="field">        
+            <%= f.label :prompt, class: 'label' %>
+            <div class="control">
+                <%= f.text_area :prompt, class: 'textarea', required:true %> 
+            </div> 
+        </div>
+        <div class="field">     
+            <%= f.label :length, class: 'label' %>
+            <div class="control">
+                <%= f.text_field :length, class: 'input', value: '1000' %>  
+            </div>
+        </div>
+        <div class="field">     
+            <div class="control">
+                <label class="checkbox">            
+                    <%= f.check_box :is_continuation, value:false %> 
+                    Is continuation
+                </label> 
+            </div>
+        </div>
+        <div class="field">  
+            <div class="control">  
+                <label class="checkbox">
+                    <%= f.check_box :start_at_beginning, value:true %>
+                    Start at beginning
+                </label>
+            </div>  
+        </div>
+        <div class="field"> 
+            <div class="control">  
+                <label class="checkbox">
+                    <%= f.check_box :pause_at_end, value:false %>               
+                    Pause at end
+                </label>
+            </div> 
+        </div>
+        <div class="field">  
+            <%= f.label :top_p, class: 'label' %>
+            <div class="control">
+                <%= f.text_field :top_p, class: 'input', value: '0.9' %> 
+            </div> 
+        </div>
+        <div class="field">     
+            <%= f.label :temperature, class: 'label' %>
+            <div class="control">
+                <%= f.text_field :temperature, class: 'input', value: '1.0' %>  
+            </div>
+        </div>
+        <div class="field"> 
+            <div class="control">
+                <%= f.submit "Create Document", class: 'button is-link' %>     
+            </div>
+        </div>            
 <% end %>
 
