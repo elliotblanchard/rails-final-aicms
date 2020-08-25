@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsFinalAicms</title>
+    <title>Welcome to AICMS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/f8027915fa.js" crossorigin="anonymous"></script>     
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div>
-      <% if logged_in? %>
-        <%= link_to current_user.username, user_path(current_user.id) %> | 
-        <%= link_to "Logout", logout_path, method: "delete" %> |
-        <%= link_to "Create Document", new_user_document_path(current_user.id) %> |
-        <%= link_to "Your Documents", user_documents_path(current_user.id) %> |
-        <%= link_to "Generator List", generators_path if admin? %>
-      <% else %>
-        <%=link_to "Sign Up", signup_path %> |
-        <%=link_to "Log In", login_path %> 
-      <% end %>
-    </div>
-    <%= yield %>
+    <section class="hero has-background-white-ter is-fullheight">
+      <!-- .hero-head -->
+      <nav class="hero-head">
+          <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+              <div class="column right">
+                  <% if logged_in? %>
+                    <p class="subtitle">
+                      <%= link_to current_user.username, user_path(current_user.id) %> | 
+                      <%= link_to "Logout", logout_path, method: :delete %> |
+                      <%= link_to "Create Document", new_user_document_path(current_user.id) %> |
+                      <%= link_to "Your Documents", user_documents_path(current_user.id) %> |
+                      <%= link_to "Generator List", generators_path if admin? %>
+                    </p>
+                  <% else %>
+                    <p class="subtitle">
+                      <%=link_to "Sign Up", signup_path %> |
+                      <%=link_to "Log In", login_path %> 
+                    </p>
+                  <% end %>            
+              </div>              
+          </div>
+      </nav>
+      <!-- /.hero-head -->   
+
+      <!-- .hero-body -->
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class ="column is-5-tablet is-6-desktop is-7-widescreen"> 
+              <div class="box">  
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>                      
+    </section>    
   </body>
 </html>
