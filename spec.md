@@ -28,3 +28,8 @@ Confirm:
 - [ ] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
+
+
+* Seems that form validations aren't working anymore on new document form
+* Need to add the new generators
+* Need error handling / display (and don't save the docuemnt) on the JSON responses
