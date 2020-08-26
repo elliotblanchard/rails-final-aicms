@@ -1,8 +1,12 @@
-<h1>Name: <%=@user.username %></h1>
+<p class="title is-5"><%=@user.username %></p>
 <% if admin? %>
-    <h2>Admin</h2>
+    <p class="subtitle is-6">Admin</p>
 <% end %>
 
-<p><%= link_to 'See all documents', user_documents_path(@user) %></p>
-<p><%= link_to 'Add a new document', new_user_document_path(@user) %></p>
+<span class="tag is-primary">
+    <%= link_to 'See all documents', user_documents_path(@user) %>
+</span>    
+<span class="tag is-primary">
+    <%= link_to 'Add a new document', new_user_document_path(@user) %>
+</span>
 
