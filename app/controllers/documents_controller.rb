@@ -38,13 +38,17 @@ class DocumentsController < ApplicationController
         @generator = Generator.find(params[:generator][:id])
         params[:document][:generator_id] = params[:generator][:id]
         params[:document][:user_id] = current_user.id
-        params[:document][:generated_response] = @generator.generator_request(params[:document]) #Call the API to generate the document content
-        @document = Document.new(document_params)
-        if @document.save
-            redirect_to @document
+        @document = Document.new(document_params) 
+        if @document.save       
+            params[:document][:generated_response] = @generator.generator_request(params[:document]) #Call the API to generate the document content
+            if @document.update(document_params) 
+                redirect_to @document
+            else
+                render :new
+            end       
         else
             render :new
-        end
+        end                   
     end
 
     def show
