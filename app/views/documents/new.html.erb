@@ -65,8 +65,11 @@
         </div>
         <div class="field"> 
             <div class="control">
-                <%= f.submit "Create Document", class: 'button is-link' %>     
+                <%= f.submit "Create Document", class: 'button is-link', :onclick => 'showLoading()' %>     
             </div>
-        </div>            
+        </div> 
+        <div id="loading" class="loading">
+            <progress class="progress is-link is-medium" max="100">15%</progress>  
+        </div>
 <% end %>
 

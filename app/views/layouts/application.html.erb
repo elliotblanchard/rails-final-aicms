@@ -3,7 +3,12 @@
   <head>
     <title>Welcome to AICMS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-    <script src="https://kit.fontawesome.com/f8027915fa.js" crossorigin="anonymous"></script>     
+    <script src="https://kit.fontawesome.com/f8027915fa.js" crossorigin="anonymous"></script>  
+    <style>
+    .loading {
+        display: none;
+    }
+    </style>       
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
   </head>
@@ -47,7 +52,14 @@
             </div>
           </div>          
         </div>
-      </div>                      
-    </section>    
+      </div>                  
+    </section>   
+
+    <script>
+        function showLoading() {
+          var x = document.getElementById("loading");
+          x.style.display = "block";
+        }
+    </script>
   </body>
 </html>
