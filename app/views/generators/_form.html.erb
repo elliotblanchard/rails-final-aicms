@@ -1,17 +1,27 @@
 <%= render partial: "layouts/errors", locals: {object: @generator} %>
 
 <%= form_for(@generator) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, required:true %>
-    </p>
-    <p>
-    <%= f.label :api_url, "API URL" %>
-    <%= f.text_field :api_url, required:true %>          
-    </p>
-    <p>  
-    <%= f.label :description %>
-    <%= f.text_area :description, required:true %>  
-    </p>
-    <p>     
-    <%= f.submit "Submit Generator" %>     
+    <div class="field">
+        <%= f.label :name %>
+        <div class="control"> 
+            <%= f.text_field :name, class: 'input', required:true %>
+        </div> 
+    </div> 
+    <div class="field">
+        <%= f.label :api_url, "API URL" %>
+        <div class="control"> 
+            <%= f.text_field :api_url, class: 'input', required:true %>          
+        </div> 
+    </div> 
+    <div class="field">
+        <%= f.label :description %>
+        <div class="control"> 
+            <%= f.text_area :description, class: 'textarea', required:true %>  
+        </div> 
+    </div> 
+    <div class="field">   
+        <div class="control"> 
+            <%= f.submit "Submit Generator", class: 'button is-link' %> 
+        </div> 
+    </div>     
 <% end %>

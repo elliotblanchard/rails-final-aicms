@@ -1,15 +1,31 @@
-<h1>¡Show Generator!</h1>
+<p class="title is-5"><%= @generator.name %></p>
 
-<p>Name: <%= @generator.name %></p>
-<p>API URL: <%= @generator.api_url %></p>
-<p>Description: <%= @generator.description %></p>
-<p>Associated Documents:</p>
-<ol>
-<% @generator.documents.each do |document| %>
-    <li><%= link_to document.name, document_path(document) %></li>
-<% end %>
-</ol>
-<p><%= link_to "Edit Generator", edit_generator_path %></p>
-<% if @generator.documents.length == 0 %>
-    <p><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></p>
-<% end %>
+<div class="columns">
+    <div class="column">
+        <p class="subtitle is-6">
+            <label class="has-text-weight-semibold">API URL:</label> 
+            <%= @generator.api_url %>
+            <br>
+            <label class="has-text-weight-semibold">Description:</label>  
+            <%= @generator.description %>
+            <br>
+            <label class="has-text-weight-semibold">Associated Documents:</label>
+        </p>
+    </div>
+</div>
+<div class="columns">
+    <div class="column">
+            <ol class="is-size-6">
+                <% @generator.documents.each do |document| %>
+                    <li><%= link_to document.name, document_path(document) %></li>
+                <% end %>
+            </ol>
+            <br>
+            <p class="subtitle is-6">
+                <span class="tag is-primary"><%= link_to "Edit Generator", edit_generator_path %></span>
+            <% if @generator.documents.length == 0 %>
+                <span class="tag is-primary"><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></span>
+            <% end %>
+            </p>
+    </div>
+</div>
