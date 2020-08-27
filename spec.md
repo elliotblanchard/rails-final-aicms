@@ -19,16 +19,14 @@ Specs:
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
-- [ ] Keep it DRY
-    - [ ] Logic present in your controllers should be encapsulated as methods in your models
-    - [ ] Your views should use helper methods and partials when appropriate
+- [x] Keep it DRY
+    - [x] Logic present in your controllers should be encapsulated as methods in your models
+    - [x] Your views should use helper methods and partials when appropriate
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
 
-
-* Need to add the new generators
 * Need error handling / display (and don't save the docuemnt) on the JSON responses

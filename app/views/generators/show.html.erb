@@ -22,9 +22,9 @@
             </ol>
             <br>
             <p class="subtitle is-6">
-                <span class="tag is-primary"><%= link_to "Edit Generator", edit_generator_path %></span>
+                <span class="tag is-primary"><%= link_to "Edit Generator", edit_generator_path, :class=>"has-text-white" %></span>
             <% if @generator.documents.length == 0 %>
-                <span class="tag is-warning"><%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy %></span>
+                <%= button_to "Delete Generator", @generator, :method=>:delete, :class=>:destroy, class: 'button is-small is-danger' %>
             <% end %>
             </p>
     </div>
