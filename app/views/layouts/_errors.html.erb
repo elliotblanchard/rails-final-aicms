@@ -13,3 +13,9 @@
   </div>
   <br>
 <% end %>
+
+<% if flash[:message] %>
+    <span class="tag is-warning is-medium"><%= flash[:message] %></span>
+    <br>
+    <br>
+<% end %> 
