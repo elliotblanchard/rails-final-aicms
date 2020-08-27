@@ -1,11 +1,16 @@
 <p class="title is-5">Generators</p>
 <div class="column">
-    <ol class="is-size-6">
-    <% @generators.each do |generator| %>
-        <li><%= link_to generator.name, generator_path(generator) %></li>
-    <% end %>
-    </ol>
+    <div class="tile is-ancestor">
+        <div class="tile is-12 is-vertical is-parent">
+            <% @generators.each do |generator| %>
+                <article class="tile is-child notification is-link">
+                    <%= link_to generator.name, generator_path(generator), :class=>"subtitle is-6" %>
+                </article>
+            <% end %>
+        </div>
+    </div>
 </div>
+<br>
 <p class="subtitle is-6">
-    <span class="tag is-primary"><%= link_to "Create new generator", new_generator_path %></span>
+    <span class="tag is-primary"><%= link_to "Create new generator", new_generator_path, :class=>"has-text-white" %></span>
 </p>

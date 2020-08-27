@@ -39,7 +39,7 @@ class DocumentsController < ApplicationController
         params[:document][:generator_id] = params[:generator][:id]
         params[:document][:user_id] = current_user.id
         @document = Document.new(document_params) 
-        if @document.save       
+        if @document.valid?       
             params[:document][:generated_response] = @generator.generator_request(params[:document]) #Call the API to generate the document content
             unless params[:document][:generated_response] == false
                 if @document.update(document_params) 
@@ -49,8 +49,7 @@ class DocumentsController < ApplicationController
                 end 
             else
                 flash[:message] = "AI is down, please try again later."
-                #redirect_to login_path                
-                render :new
+                redirect_to new_document_path                
             end                      
         else
             render :new
