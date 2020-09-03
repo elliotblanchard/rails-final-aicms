@@ -27,7 +27,11 @@
                       <%= link_to current_user.username, user_path(current_user.id) %> | 
                       <%= link_to "Logout", logout_path, method: :delete %> |
                       <%= link_to "Create Document", new_user_document_path(current_user.id) %> |
-                      <%= link_to "Your Documents", user_documents_path(current_user.id) %> |
+                      <% if admin? %>
+                        <%= link_to "All Documents", user_documents_path(current_user.id) %> |
+                      <% else %>
+                        <%= link_to "Your Documents", user_documents_path(current_user.id) %> |
+                      <% end %>                      
                       <%= link_to "Generator List", generators_path if admin? %>
                     </p>
                   <% else %>

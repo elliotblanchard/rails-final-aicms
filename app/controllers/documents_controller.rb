@@ -5,10 +5,14 @@ class DocumentsController < ApplicationController
         if admin?
             @documents = Document.all
         else
-            if user_found?
-                @documents = @user.documents
+            if params[:user_id].to_i == current_user.id
+                if user_found?
+                    @documents = @user.documents
+                else
+                    @documents = current_user.documents
+                end
             else
-                @documents = current_user.documents
+                redirect_to root_path
             end
         end
     end
@@ -57,8 +61,11 @@ class DocumentsController < ApplicationController
     end
 
     def show
-        @document = Document.find_by_id(params[:id])
-        unless (@document.user.id == current_user.id) || admin?
+        if (@document = Document.find_by_id(params[:id]))
+            unless (@document.user.id == current_user.id) || admin?
+                redirect_to user_path 
+            end
+        else
             redirect_to user_path 
         end
     end
