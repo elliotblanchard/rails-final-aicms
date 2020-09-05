@@ -7,7 +7,9 @@ class Generator < ApplicationRecord
     validates :api_url, presence: true
     validates :api_url, format: { with: URI.regexp }
     validates :api_url, uniqueness: true
-    validates :description, presence: true        
+    validates :description, presence: true       
+    
+    scope :most_popular, -> {joins(:documents).group(:generator_id).order('count_all desc').count}
 
     def generator_request(params)
         authorization = "Bearer #{ENV['INFERKIT_KEY']}"

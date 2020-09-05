@@ -5,6 +5,11 @@ class GeneratorsController < ApplicationController
         @generators = Generator.all
     end 
 
+    def most_popular
+        @generators = Generator.all
+        @generator_popularity = Generator.most_popular
+    end    
+
     def new
         @generator = Generator.new
     end    
